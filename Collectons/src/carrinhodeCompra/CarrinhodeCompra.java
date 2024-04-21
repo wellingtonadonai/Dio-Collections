@@ -7,9 +7,7 @@ import java.util.List;
 
 public class CarrinhodeCompra {
 
-   
-    @SuppressWarnings("unchecked")
-    private List<Item> itemList = new ArrayList();
+    private List<Item> itemList = new ArrayList<>();
 
     public CarrinhodeCompra(){
 
@@ -24,6 +22,7 @@ public class CarrinhodeCompra {
     public void removerItem(String nome){
         List<Item> itensParaRemover = new ArrayList<>();
         if (!this.itemList.isEmpty()) {
+            @SuppressWarnings("rawtypes")
             Iterator var3 = this.itemList.iterator();
    
             while(var3.hasNext()) {
@@ -46,7 +45,8 @@ public class CarrinhodeCompra {
             throw new RuntimeException("A lista est\u00e1 vazia!");
          } else {
             double valorItem;
-            for(Iterator var3 = this.itemList.iterator(); var3.hasNext(); valorTotal += valorItem) {
+            for(@SuppressWarnings("rawtypes")
+            Iterator var3 = this.itemList.iterator(); var3.hasNext(); valorTotal += valorItem) {
                Item item = (Item)var3.next();
                valorItem = item.getPreco() * (double)item.getQuant();
             }
